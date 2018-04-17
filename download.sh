@@ -13,6 +13,6 @@ case "$(uname -s)" in
 esac
 
 download_lists=$(curl -s https://www.asahi.com/articles/ASL4J669JL4JUEHF016.html | ggrep -Po '(?<=href\=").+\.pdf' | sort | uniq)
-multi_process=10
+multi_process=8
 
-echo $download_lists | xargs -P $multi_process -n 1 pget -p $cpu_cores
+echo $download_lists | xargs -P $multi_process -n 1 pget -p $cpu_cores -t 120
